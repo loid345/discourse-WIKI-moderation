@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# name: discourse-wiki-moderation
+# name: discourse-WIKI-moderation
 # about: Adds moderation for wiki edits with approve/reject flow.
 # version: 0.1.0
 # authors: Discourse Community
@@ -10,7 +10,7 @@
 enabled_site_setting :wiki_moderation_enabled
 
 module ::WikiModeration
-  PLUGIN_NAME = "discourse-wiki-moderation"
+  PLUGIN_NAME = "discourse-WIKI-moderation"
   PENDING_EDIT_KEY = "wiki_moderation_pending_edit"
 
   def self.pending_edit_for(post)
