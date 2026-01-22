@@ -34,7 +34,7 @@ end
 require_relative "lib/wiki_moderation/engine"
 
 after_initialize do
-  DiscourseEvent.on(:post_edited) do |post, editor|
+  on(:post_edited) do |post, editor|
     next unless SiteSetting.wiki_moderation_enabled
     next unless post.wiki
     next if editor&.staff?
