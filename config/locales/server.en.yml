@@ -1,1 +1,7 @@
 en:
+  site_settings:
+    wiki_moderation_enabled: "Require approval for wiki edits."
+  reviewable_wiki_edit:
+    title: "Wiki edit pending approval"
+    approved: "Approved wiki edit"
+    rejected: "Rejected wiki edit"
