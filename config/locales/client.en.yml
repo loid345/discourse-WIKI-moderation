@@ -1,9 +1,16 @@
 en:
+  js:
+    reviewables:
+      types:
+        reviewable_wiki_edit:
+          title: "Wiki edit"
+      actions:
+        approve_wiki_edit:
+          title: "Approve"
+        reject_wiki_edit:
+          title: "Reject"
   admin_js:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
-  js:
-    discourse_plugin_name:
-      placeholder: placeholder
+          wiki_moderation: "Wiki moderation"
