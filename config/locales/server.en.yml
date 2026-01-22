@@ -1,7 +1,33 @@
 en:
   site_settings:
     wiki_moderation_enabled: "Require approval for wiki edits."
+    wiki_moderation_ignore_staff: "Allow staff to edit wiki posts without approval."
+    wiki_moderation_exempt_groups: "Groups that can edit wiki posts without approval."
+    wiki_moderation_notify_moderators: "Notify moderators about pending wiki edits."
+    wiki_moderation_notify_authors: "Notify authors when their wiki edits are approved or rejected."
   reviewable_wiki_edit:
     title: "Wiki edit pending approval"
     approved: "Approved wiki edit"
     rejected: "Rejected wiki edit"
+  system_messages:
+    wiki_edit_pending:
+      subject_template: "Wiki edit awaiting review"
+      text_body_template: |
+        A wiki edit by @%{editor_username} is awaiting review.
+
+        Post: %{post_title}
+        %{post_url}
+    wiki_edit_approved:
+      subject_template: "Your wiki edit was approved"
+      text_body_template: |
+        Your wiki edit has been approved by @%{moderator_username}.
+
+        Post: %{post_title}
+        %{post_url}
+    wiki_edit_rejected:
+      subject_template: "Your wiki edit was rejected"
+      text_body_template: |
+        Your wiki edit has been rejected by @%{moderator_username}.
+
+        Post: %{post_title}
+        %{post_url}

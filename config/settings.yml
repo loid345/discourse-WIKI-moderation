@@ -2,3 +2,12 @@ wiki_moderation:
   wiki_moderation_enabled:
     default: false
     client: true
+  wiki_moderation_ignore_staff:
+    default: true
+  wiki_moderation_exempt_groups:
+    default: ""
+    type: group_list
+  wiki_moderation_notify_moderators:
+    default: false
+  wiki_moderation_notify_authors:
+    default: true
