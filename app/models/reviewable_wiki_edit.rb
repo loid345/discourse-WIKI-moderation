@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency "reviewable"
+
 class ReviewableWikiEdit < Reviewable
   def build_actions(actions, guardian, args)
     return unless guardian.can_approve?(self)
