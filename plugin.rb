@@ -33,9 +33,9 @@ end
 
 require_relative "lib/wiki_moderation/engine"
 
-require_relative "app/models/reviewable_wiki_edit"
-
 after_initialize do
+  require_dependency File.expand_path("../app/models/reviewable_wiki_edit.rb", __FILE__)
+
   DiscourseEvent.on(:post_edited) do |post, editor|
     next unless SiteSetting.wiki_moderation_enabled
     next unless post.wiki
