@@ -16,7 +16,25 @@
         </div>
 
         {{#if edit.diff_html}}
-          <div class="wiki-moderation__diff">{{{edit.diff_html}}}</div>
+          {{#if edit.side_by_side_html}}
+            <div class="wiki-moderation__diff-toggle">
+              <DButton
+                @action={{fn this.setDiffMode edit "inline"}}
+                @label="wiki_moderation.diff_inline"
+                @class={{if (eq edit.diff_mode "inline") "btn-primary" "btn-default"}}
+              />
+              <DButton
+                @action={{fn this.setDiffMode edit "side-by-side"}}
+                @label="wiki_moderation.diff_side_by_side"
+                @class={{if (eq edit.diff_mode "side-by-side") "btn-primary" "btn-default"}}
+              />
+            </div>
+          {{/if}}
+          {{#if (and edit.side_by_side_html (eq edit.diff_mode "side-by-side"))}}
+            <div class="wiki-moderation__diff">{{{edit.side_by_side_html}}}</div>
+          {{else}}
+            <div class="wiki-moderation__diff">{{{edit.diff_html}}}</div>
+          {{/if}}
         {{/if}}
 
         <div class="wiki-moderation__editor">

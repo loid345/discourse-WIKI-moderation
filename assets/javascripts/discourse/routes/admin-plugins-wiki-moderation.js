@@ -10,6 +10,7 @@ export default class AdminPluginsWikiModerationRoute extends DiscourseRoute {
     const edits = (model?.pending_edits || []).map((edit) => ({
       ...edit,
       draft_raw: edit.raw,
+      diff_mode: "inline",
     }));
 
     controller.setProperties({
