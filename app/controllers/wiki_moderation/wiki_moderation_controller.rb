@@ -22,7 +22,7 @@ module WikiModeration
 
     def approve
       reviewable = find_reviewable
-      reviewable.perform_approve_wiki_edit(current_user, edited_raw: params[:edited_raw])
+      reviewable.perform(current_user, :approve_wiki_edit, edited_raw: params[:edited_raw])
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
@@ -30,10 +30,7 @@ module WikiModeration
 
     def reject
       reviewable = find_reviewable
-      reviewable.perform_reject_wiki_edit(
-        current_user,
-        { reject_reason: params[:reject_reason] },
-      )
+      reviewable.perform(current_user, :reject_wiki_edit, reject_reason: params[:reject_reason])
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
