@@ -1,0 +1,33 @@
+ru:
+  site_settings:
+    wiki_moderation_enabled: "Требовать одобрение изменений wiki-постов."
+    wiki_moderation_ignore_staff: "Разрешить персоналу редактировать wiki-посты без одобрения."
+    wiki_moderation_exempt_groups: "Группы, которые могут редактировать wiki-посты без одобрения."
+    wiki_moderation_notify_moderators: "Уведомлять модераторов о ожидающих проверку wiki-правках."
+    wiki_moderation_notify_authors: "Уведомлять авторов, когда их правки wiki одобрены или отклонены."
+  reviewable_wiki_edit:
+    title: "Правка wiki ожидает одобрения"
+    approved: "Правка wiki одобрена"
+    rejected: "Правка wiki отклонена"
+  system_messages:
+    wiki_edit_pending:
+      subject_template: "Правка wiki ожидает проверки"
+      text_body_template: |
+        Правка wiki от @%{editor_username} ожидает проверки.
+
+        Пост: %{post_title}
+        %{post_url}
+    wiki_edit_approved:
+      subject_template: "Ваша правка wiki одобрена"
+      text_body_template: |
+        Ваша правка wiki была одобрена модератором @%{moderator_username}.
+
+        Пост: %{post_title}
+        %{post_url}
+    wiki_edit_rejected:
+      subject_template: "Ваша правка wiki отклонена"
+      text_body_template: |
+        Ваша правка wiki была отклонена модератором @%{moderator_username}.
+
+        Пост: %{post_title}
+        %{post_url}

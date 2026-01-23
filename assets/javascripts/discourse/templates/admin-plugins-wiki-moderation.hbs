@@ -1,0 +1,55 @@
+<section class="wiki-moderation">
+  <h1>{{i18n "wiki_moderation.title"}}</h1>
+
+  {{#if this.edits.length}}
+    {{#each this.edits as |edit|}}
+      <div class="wiki-moderation__item">
+        <h3>
+          <a href={{edit.post_url}} target="_blank" rel="noopener noreferrer">
+            {{edit.post_title}}
+          </a>
+        </h3>
+
+        <div class="wiki-moderation__meta">
+          <span>{{i18n "wiki_moderation.edited_by"}}: {{edit.edited_by_username}}</span>
+          <span>{{i18n "wiki_moderation.created_at"}}: {{edit.created_at}}</span>
+        </div>
+
+        {{#if edit.diff_html}}
+          <div class="wiki-moderation__diff">{{{edit.diff_html}}}</div>
+        {{/if}}
+
+        <div class="wiki-moderation__editor">
+          <div class="wiki-moderation__column">
+            <label class="wiki-moderation__label">{{i18n "wiki_moderation.original"}}</label>
+            <textarea readonly>{{edit.original_raw}}</textarea>
+          </div>
+          <div class="wiki-moderation__column">
+            <label class="wiki-moderation__label">{{i18n "wiki_moderation.proposed"}}</label>
+            <textarea
+              value={{edit.draft_raw}}
+              {{on "input" (fn this.updateDraft edit)}}
+            >{{edit.draft_raw}}</textarea>
+          </div>
+        </div>
+
+        <div class="wiki-moderation__actions">
+          <DButton
+            @action={{fn this.approve edit}}
+            @label="wiki_moderation.approve"
+            @class="btn-primary"
+            @disabled={{this.loading}}
+          />
+          <DButton
+            @action={{fn this.reject edit}}
+            @label="wiki_moderation.reject"
+            @class="btn-danger"
+            @disabled={{this.loading}}
+          />
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>{{i18n "wiki_moderation.empty"}}</p>
+  {{/if}}
+</section>

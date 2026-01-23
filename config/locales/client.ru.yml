@@ -1,0 +1,26 @@
+ru:
+  js:
+    reviewables:
+      types:
+        reviewable_wiki_edit:
+          title: "Правка wiki"
+      actions:
+        approve_wiki_edit:
+          title: "Одобрить"
+        reject_wiki_edit:
+          title: "Отклонить"
+    wiki_moderation:
+      title: "Модерация wiki"
+      empty: "Нет ожидающих правок wiki."
+      approve: "Одобрить"
+      reject: "Отклонить"
+      reject_confirm: "Отклонить эту wiki-правку?"
+      original: "Текущий текст"
+      proposed: "Предложенный текст"
+      edited_by: "Автор правки"
+      created_at: "Отправлено"
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          wiki_moderation: "Модерация wiki"
