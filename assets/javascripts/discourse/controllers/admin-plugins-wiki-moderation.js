@@ -15,6 +15,12 @@ export default class AdminPluginsWikiModerationController extends Controller {
   }
 
   @action
+  setDiffMode(edit, mode) {
+    edit.diff_mode = mode;
+    this.edits = [...this.edits];
+  }
+
+  @action
   async approve(edit) {
     this.loading = true;
 

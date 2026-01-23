@@ -22,4 +22,22 @@
     background-color: var(--success-low);
     color: var(--success);
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    border: 1px solid var(--primary-low);
+    padding: 0.5rem;
+    vertical-align: top;
+    width: 50%;
+  }
+}
+
+.wiki-moderation__diff-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }

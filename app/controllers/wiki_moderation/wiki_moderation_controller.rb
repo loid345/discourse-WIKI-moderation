@@ -61,7 +61,11 @@ module WikiModeration
           post_title: post&.topic&.title || post&.topic&.fancy_title,
           original_raw: pending["original_raw"],
           raw: pending["raw"],
-          diff_html: pending["diff_html"],
+          diff_html:
+            pending["diff_html"] || WikiModeration.diff_html(pending["original_raw"], pending["raw"]),
+          side_by_side_html:
+            pending["side_by_side_html"] ||
+              WikiModeration.side_by_side_diff_html(pending["original_raw"], pending["raw"]),
           edited_by_id: pending["edited_by_id"],
           edited_by_username: editor&.username,
           created_at: pending["created_at"] || reviewable.created_at&.iso8601,

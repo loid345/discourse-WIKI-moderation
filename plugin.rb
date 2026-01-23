@@ -84,7 +84,10 @@ module ::WikiModeration
   end
 
   def self.reviewable_payload_for(pending)
-    pending.merge("diff_html" => diff_html(pending["original_raw"], pending["raw"]))
+    pending.merge(
+      "diff_html" => diff_html(pending["original_raw"], pending["raw"]),
+      "side_by_side_html" => side_by_side_diff_html(pending["original_raw"], pending["raw"]),
+    )
   end
 
   def self.notify_moderators!(post, editor)
@@ -125,6 +128,12 @@ module ::WikiModeration
     return if original_raw.blank? || proposed_raw.blank?
 
     DiscourseDiff.new(original_raw, proposed_raw).inline_html
+  end
+
+  def self.side_by_side_diff_html(original_raw, proposed_raw)
+    return if original_raw.blank? || proposed_raw.blank?
+
+    DiscourseDiff.new(original_raw, proposed_raw).side_by_side_html
   end
 end
 

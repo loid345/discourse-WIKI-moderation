@@ -15,6 +15,8 @@ ru:
       approve: "Одобрить"
       reject: "Отклонить"
       reject_confirm: "Отклонить эту wiki-правку?"
+      diff_inline: "Встроенный"
+      diff_side_by_side: "Рядом"
       original: "Текущий текст"
       proposed: "Предложенный текст"
       edited_by: "Автор правки"
