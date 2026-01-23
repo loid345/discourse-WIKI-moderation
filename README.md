@@ -8,6 +8,7 @@ Adds moderation for wiki edits with an approve/reject flow via the Discourse rev
 - A reviewable item is created for staff to approve or reject the edit.
 - Optional notifications are sent to moderators and/or the original editor.
 - Staff can review pending edits in **Admin → Plugins → Wiki moderation**.
+- Moderators can compare changes using inline or side-by-side diff views.
 
 ## Settings
 
