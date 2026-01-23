@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 WikiModeration::Engine.routes.draw do
-  get "/" => "wiki_moderation#index"
+  get "/" => "wiki_moderation#index", as: nil
   post "/:id/approve" => "wiki_moderation#approve"
   post "/:id/reject" => "wiki_moderation#reject"
 end
