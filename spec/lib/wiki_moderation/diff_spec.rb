@@ -8,7 +8,7 @@ RSpec.describe WikiModeration do
       html = described_class.diff_html("old content", "new content")
 
       expect(html).to be_present
-      expect(html).to include("<ins").or include("<del")
+      expect(html).to include("inline-diff")
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.describe WikiModeration do
       html = described_class.side_by_side_diff_html("old content", "new content")
 
       expect(html).to be_present
-      expect(html).to include("<table")
+      expect(html).to include("revision-content")
     end
   end
 
