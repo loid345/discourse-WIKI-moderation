@@ -11,3 +11,7 @@ wiki_moderation:
     default: false
   wiki_moderation_notify_authors:
     default: true
+  wiki_moderation_rejection_reasons:
+    default: "Does not follow community rules|Incorrect data|Needs clarification|Duplicate|Off-topic"
+    type: list
+    client: true

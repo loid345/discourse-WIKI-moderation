@@ -1,0 +1,36 @@
+<DModalBody
+  @title={{i18n "wiki_moderation.reject_modal_title"}}
+  @dismiss={{action "closeModal"}}
+>
+  <div class="wiki-moderation__modal">
+    {{#if this.rejectionReasons.length}}
+      <label class="wiki-moderation__label">{{i18n "wiki_moderation.reject_reason_select"}}</label>
+      <select {{on "change" this.applyRejectTemplate}}>
+        <option value="">{{i18n "wiki_moderation.reject_reason_select_placeholder"}}</option>
+        {{#each this.rejectionReasons as |reason|}}
+          <option value={{reason}} selected={{eq reason this.selectedReason}}>
+            {{reason}}
+          </option>
+        {{/each}}
+      </select>
+    {{/if}}
+    <label class="wiki-moderation__label">{{i18n "wiki_moderation.reject_reason"}}</label>
+    <textarea
+      value={{this.rejectReason}}
+      placeholder={{i18n "wiki_moderation.reject_reason_placeholder"}}
+      {{on "input" this.updateRejectReason}}
+    >{{this.rejectReason}}</textarea>
+    <p class="wiki-moderation__hint">{{i18n "wiki_moderation.reject_reason_desc"}}</p>
+  </div>
+</DModalBody>
+
+<DModalFooter>
+  <DButton
+    @class="btn-danger"
+    @action={{this.reject}}
+    @label="wiki_moderation.reject"
+    @icon="times"
+    @disabled={{this.submitDisabled}}
+  />
+  <DButton @class="btn-default" @action={{action "closeModal"}} @label="cancel" />
+</DModalFooter>
