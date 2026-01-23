@@ -73,6 +73,7 @@ class ReviewableWikiEdit < Reviewable
       existing.update!(
         created_by: created_by,
         payload: payload,
+        reviewable_by_moderator: true,
         status: Reviewable.statuses[:pending],
       )
       return existing
@@ -80,6 +81,7 @@ class ReviewableWikiEdit < Reviewable
 
     ReviewableWikiEdit.create!(
       created_by: created_by,
+      reviewable_by_moderator: true,
       target: target,
       payload: payload,
       status: Reviewable.statuses[:pending],

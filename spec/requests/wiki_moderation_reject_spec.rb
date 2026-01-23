@@ -27,7 +27,10 @@ RSpec.describe "Wiki moderation reject" do
     )
   end
 
-  before { sign_in(admin) }
+  before do
+    SiteSetting.wiki_moderation_enabled = true
+    sign_in(admin)
+  end
 
   def reject_request(reason: nil)
     params = {}
