@@ -7,6 +7,6 @@ WikiModeration::Engine.routes.draw do
 end
 
 Discourse::Application.routes.append do
-  mount ::WikiModeration::Engine, at: "wiki-moderation", as: "wiki_moderation_engine"
+  mount ::WikiModeration::Engine, at: "wiki-moderation", as: "wiki_moderation_mount"
   get "/admin/plugins/wiki-moderation" => "admin/plugins#index", constraints: StaffConstraint.new
 end
