@@ -39,6 +39,7 @@ class ReviewableWikiEdit < Reviewable
 
   def perform_reject_wiki_edit(performing_user, args)
     pending = pending_edit_from_payload
+    update!(reject_reason: args[:reject_reason].presence)
     WikiModeration.remove_pending_edit!(target, pending["id"]) if pending
     WikiModeration.notify_author!(target, pending, moderator: performing_user, decision: :rejected) if pending
 

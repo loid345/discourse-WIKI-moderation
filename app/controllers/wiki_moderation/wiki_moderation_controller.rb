@@ -30,7 +30,10 @@ module WikiModeration
 
     def reject
       reviewable = find_reviewable
-      reviewable.perform_reject_wiki_edit(current_user, {})
+      reviewable.perform_reject_wiki_edit(
+        current_user,
+        { reject_reason: params[:reject_reason] },
+      )
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
