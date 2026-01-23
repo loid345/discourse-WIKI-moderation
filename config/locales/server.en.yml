@@ -5,6 +5,7 @@ en:
     wiki_moderation_exempt_groups: "Groups that can edit wiki posts without approval."
     wiki_moderation_notify_moderators: "Notify moderators about pending wiki edits."
     wiki_moderation_notify_authors: "Notify authors when their wiki edits are approved or rejected."
+    wiki_moderation_rejection_reasons: "Preset rejection reasons for wiki edits."
   reviewable_wiki_edit:
     title: "Wiki edit pending approval"
     approved: "Approved wiki edit"
@@ -28,6 +29,8 @@ en:
       subject_template: "Your wiki edit was rejected"
       text_body_template: |
         Your wiki edit has been rejected by @%{moderator_username}.
+
+        Reason: %{reject_reason}
 
         Post: %{post_title}
         %{post_url}

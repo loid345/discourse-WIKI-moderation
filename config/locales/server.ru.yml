@@ -5,6 +5,7 @@ ru:
     wiki_moderation_exempt_groups: "Группы, которые могут редактировать wiki-посты без одобрения."
     wiki_moderation_notify_moderators: "Уведомлять модераторов о ожидающих проверку wiki-правках."
     wiki_moderation_notify_authors: "Уведомлять авторов, когда их правки wiki одобрены или отклонены."
+    wiki_moderation_rejection_reasons: "Готовые причины отклонения wiki-правок."
   reviewable_wiki_edit:
     title: "Правка wiki ожидает одобрения"
     approved: "Правка wiki одобрена"
@@ -28,6 +29,8 @@ ru:
       subject_template: "Ваша правка wiki отклонена"
       text_body_template: |
         Ваша правка wiki была отклонена модератором @%{moderator_username}.
+
+        Причина: %{reject_reason}
 
         Пост: %{post_title}
         %{post_url}
