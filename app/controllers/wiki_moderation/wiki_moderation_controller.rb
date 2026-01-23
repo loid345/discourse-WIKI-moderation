@@ -22,7 +22,8 @@ module WikiModeration
 
     def approve
       reviewable = find_reviewable
-      reviewable.perform(current_user, :approve_wiki_edit, edited_raw: params[:edited_raw])
+      reviewable.perform_approve_wiki_edit(current_user, edited_raw: params[:edited_raw])
+      update_reviewable_status!(reviewable, :approved)
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
@@ -30,7 +31,8 @@ module WikiModeration
 
     def reject
       reviewable = find_reviewable
-      reviewable.perform(current_user, :reject_wiki_edit, reject_reason: params[:reject_reason])
+      reviewable.perform_reject_wiki_edit(current_user, reject_reason: params[:reject_reason])
+      update_reviewable_status!(reviewable, :rejected)
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
@@ -46,6 +48,16 @@ module WikiModeration
       ReviewableWikiEdit.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       raise Discourse::NotFound
+    end
+
+    def update_reviewable_status!(reviewable, fallback_status)
+      status =
+        if WikiModeration.pending_edits_for(reviewable.target).any?
+          Reviewable.statuses[:pending]
+        else
+          Reviewable.statuses.fetch(fallback_status)
+        end
+      reviewable.update!(status: status)
     end
 
     def serialize_pending_edits(reviewables, editors)
