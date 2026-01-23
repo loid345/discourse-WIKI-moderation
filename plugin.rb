@@ -9,6 +9,8 @@
 
 enabled_site_setting :wiki_moderation_enabled
 
+add_admin_route "wiki_moderation.title", "wiki-moderation"
+
 module ::WikiModeration
   PLUGIN_NAME = "discourse-WIKI-moderation"
   PENDING_EDIT_KEY = "wiki_moderation_pending_edit"

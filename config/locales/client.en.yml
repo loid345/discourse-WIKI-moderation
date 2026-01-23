@@ -9,6 +9,16 @@ en:
           title: "Approve"
         reject_wiki_edit:
           title: "Reject"
+    wiki_moderation:
+      title: "Wiki moderation"
+      empty: "No pending wiki edits."
+      approve: "Approve"
+      reject: "Reject"
+      reject_confirm: "Reject this wiki edit?"
+      original: "Current text"
+      proposed: "Proposed text"
+      edited_by: "Edited by"
+      created_at: "Submitted"
   admin_js:
     admin:
       site_settings:
