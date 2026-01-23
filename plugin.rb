@@ -124,7 +124,7 @@ module ::WikiModeration
   def self.diff_html(original_raw, proposed_raw)
     return if original_raw.blank? || proposed_raw.blank?
 
-    TextDiff.new(original_raw, proposed_raw).inline_html
+    DiscourseDiff.new(original_raw, proposed_raw).inline_html
   end
 end
 
