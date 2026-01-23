@@ -109,7 +109,7 @@ module ::WikiModeration
     end
   end
 
-  def self.notify_author!(post, pending, moderator:, decision:)
+  def self.notify_author!(post, pending, moderator:, decision:, reject_reason: nil)
     return unless SiteSetting.wiki_moderation_notify_authors
 
     user = User.find_by(id: pending["edited_by_id"])
@@ -121,6 +121,7 @@ module ::WikiModeration
       post_title: post.topic&.title || post.topic&.fancy_title || post.topic_id,
       post_url: post.url,
       moderator_username: moderator&.username || I18n.t("user.deleted", default: "deleted"),
+      reject_reason: reject_reason.to_s,
     )
   end
 

@@ -3,6 +3,7 @@ import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import showModal from "discourse/lib/show-modal";
 
 export default class AdminPluginsWikiModerationController extends Controller {
   @tracked edits = [];
@@ -41,23 +42,13 @@ export default class AdminPluginsWikiModerationController extends Controller {
   }
 
   @action
-  async reject(edit) {
-    if (!confirm(I18n.t("wiki_moderation.reject_confirm"))) {
-      return;
-    }
-
-    this.loading = true;
-
-    try {
-      await ajax(`/wiki-moderation/${edit.id}/reject`, {
-        type: "POST",
-      });
-
-      this.edits = this.edits.filter((item) => item.id !== edit.id);
-    } catch (error) {
-      popupAjaxError(error);
-    } finally {
-      this.loading = false;
-    }
+  reject(edit) {
+    const modal = showModal("reject-wiki-edit");
+    modal.setProperties({
+      edit,
+      afterReject: (rejectedEdit) => {
+        this.edits = this.edits.filter((item) => item.id !== rejectedEdit.id);
+      },
+    });
   }
 }
