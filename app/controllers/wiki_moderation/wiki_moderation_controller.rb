@@ -30,10 +30,10 @@ module WikiModeration
 
     def reject
       reviewable = find_reviewable
-      reject_reason = params[:reject_reason].to_s.strip
-      raise Discourse::InvalidParameters.new(:reject_reason) if reject_reason.blank?
-
-      reviewable.perform_reject_wiki_edit(current_user, reject_reason: reject_reason)
+      reviewable.perform_reject_wiki_edit(
+        current_user,
+        { reject_reason: params[:reject_reason] },
+      )
       render json: success_json
     rescue StandardError => e
       render_json_error(e.message)
